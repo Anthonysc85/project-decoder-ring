@@ -6,17 +6,19 @@ function caesar(input, shift, encode = true) {
     let string = input.toLowerCase();
     let result = "";
     
+    //loops through the cipher key and inputted string to begin decode or encode.
     for (let i = 0; i < string.length; i++){
       for(let j = 0; j < alphabet.length; j++){
         if (!alphabet.includes(string[i])) {
             result += string[i];
             break;
         }
+        //Shifter, determines which way to shift and what letter to asign.
         if ( string[i] === alphabet[j]) {
         let shifter = j + shift
         if (!encode) shifter = j -shift
         
-
+        //Ensures that if the shifter goes beyond the alphabet itll loop around.
         if (shifter < 0) {
             shifter += 26;
             result += alphabet[shifter];
@@ -35,6 +37,6 @@ function caesar(input, shift, encode = true) {
   return result 
 }
 
-console.log(caesar("Thinkful", 3, true));
+//console.log(caesar("z", 1, true));
 
 module.exports = caesar;
